@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gameTypeArrays">
+        <item>Racing</item>
+        <item>Turned-Based</item>
+        <item>Action</item>
+        <item>Shooter</item>
+        <item>Open World</item>
+        <item>Survival</item>
+
+    </string-array>
+
+</resources>
