@@ -20,7 +20,7 @@ If I had to describe this project in three (3) emojis, they would be: :space_inv
 The following REQUIRED features are completed:
 
 - [X] Make an API call to an API of your choice using AsyncHTTPClient
-- [ ] Display at least three (3) pieces of data for each API entry retrieved
+- [X] Display at least three (3) pieces of data for each API entry retrieved
 - [X] A working Button requests a new API entry and updates the data displayed
 
 The following STRETCH features are implemented:
@@ -31,7 +31,8 @@ The following STRETCH features are implemented:
 
 The following EXTRA features are implemented:
 
-- [X] Header color changes with pic
+- Header color changes with pic
+- Displays if the query could not find any games 
 
 ## API Choice
 
@@ -41,7 +42,7 @@ My chosen API for this project is **FreeToGame**.
 
 Here's a video / GIF that demos all of the app's implemented features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Demo' width='' alt='Video Demo' />
+<img src='http://i.imgur.com/iWlf9nV.gif' title='Video Demo' width='' alt='Video Demo' />
 
 GIF created with **ScreenToGif**
 
@@ -52,7 +53,9 @@ GIF created with **ScreenToGif**
 
 ## Notes
 
-Here's a place for any other notes on the app, it's creation process, or what you learned this unit!
+I learned how to use the AsyncHTTPClient to make calls to an API and integrate it 
+with my app. As well I learned how to use Glide to load pictures. The last thing I 
+learned was how to use the pallete class to grab the dominant color in a picture.
 
 ## License
 
