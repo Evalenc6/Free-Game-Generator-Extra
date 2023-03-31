@@ -27,7 +27,7 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
     var pictureUrl = ""
     var gameName = ""
-    var gameUrl = ""
+    var gameDescription = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val generateButton = findViewById<Button>(R.id.generateGame)
         val gameImage = findViewById<ImageView>(R.id.gameImage)
         val gameText = findViewById<TextView>(R.id.gameName)
-        val window: Window = window
+        val descriptionText = findViewById<TextView>(R.id.gameDescription)
 
         //request url
         val url = "https://www.freetogame.com/api/games?"
@@ -86,11 +86,11 @@ class MainActivity : AppCompatActivity() {
 
         generateButton.setOnClickListener{
             Log.d("buttonEvent", "Button Clicked!")
-            getGameList(platformType, gameType, url, gameText, gameImage)
+            getGameList(platformType, gameType, url, gameText, gameImage, descriptionText)
 
         }
     }
-    private fun getGameList(platform: String, type: String, url: String, text: TextView,imageView: ImageView ){
+    private fun getGameList(platform: String, type: String, url: String, text: TextView,imageView: ImageView, description: TextView ){
 
         val client = AsyncHttpClient()
         val fullUrl = url+"platform="+platform+"&category="+type
@@ -119,15 +119,16 @@ class MainActivity : AppCompatActivity() {
                 //gameUrl = randomObject?.getString("freetogame_profile_url").toString()
                 gameName = randomObject?.getString("title").toString()
                 pictureUrl = randomObject?.getString("thumbnail").toString()
+                gameDescription = randomObject?.getString("short_description").toString()
                 Log.d("JSON", "$pictureUrl \n $gameName")
-                setPictureAndName(text, imageView)
+                setEverything(text, imageView, description)
 
             }
 
         }]
     }
-    private fun setPictureAndName(text: TextView, imageView: ImageView){
-
+    private fun setEverything(text: TextView, imageView: ImageView, description: TextView){
+        description.text = gameDescription
         text.text = gameName
         Glide.with(this)
             .load(pictureUrl)
