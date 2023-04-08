@@ -15,6 +15,8 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.palette.graphics.Palette
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -28,7 +30,10 @@ class MainActivity : AppCompatActivity() {
     var pictureUrl = ""
     var gameName = ""
     var gameDescription = ""
-
+    private lateinit var gameImageList: MutableList<String>
+    private lateinit var gameNameList: MutableList<String>
+    private lateinit var gameDescList: MutableList<String>
+    private lateinit var gamesRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +42,14 @@ class MainActivity : AppCompatActivity() {
         val platformSpinner = findViewById<Spinner>(R.id.platformDropBox)
         val gameSpinner = findViewById<Spinner>(R.id.gameTypeDropBox)
         val generateButton = findViewById<Button>(R.id.generateGame)
-        val gameImage = findViewById<ImageView>(R.id.gameImage)
-        val gameText = findViewById<TextView>(R.id.gameName)
-        val descriptionText = findViewById<TextView>(R.id.gameDescription)
-
+         gamesRecyclerView = findViewById<RecyclerView>(R.id.gamesRecyclerView)
         //request url
         val url = "https://www.freetogame.com/api/games?"
 
+        //Mutable Lists
+        gameImageList = mutableListOf()
+        gameNameList = mutableListOf()
+        gameDescList = mutableListOf()
 
         //variables for platform
         var platformType = ""
@@ -86,11 +92,11 @@ class MainActivity : AppCompatActivity() {
 
         generateButton.setOnClickListener{
             Log.d("buttonEvent", "Button Clicked!")
-            getGameList(platformType, gameType, url, gameText, gameImage, descriptionText)
+            getGameList(platformType, gameType, url)
 
         }
     }
-    private fun getGameList(platform: String, type: String, url: String, text: TextView,imageView: ImageView, description: TextView ){
+    private fun getGameList(platform: String, type: String, url: String ){
 
         val client = AsyncHttpClient()
         val fullUrl = url+"platform="+platform+"&category="+type
@@ -107,35 +113,38 @@ class MainActivity : AppCompatActivity() {
                 mySnackBar.show()
             }
 
-            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
+            override fun onSuccess(statusCode: Int, headers: Headers, json: JSON) {
+                if(gameNameList.isNotEmpty()){
+                    gameNameList.clear()
+                    gameImageList.clear()
+                    gameDescList.clear()
+                }
+
                 Log.d("JSON","Request Success $json")
-                // Get a random index within the bounds of the jsonArray
-                val randomIndex = Random.nextInt(json?.jsonArray?.length() ?: 0)
 
-                // Get the random object at the randomIndex
-                val randomObject = json?.jsonArray?.getJSONObject(randomIndex)
-
-                // Get the values for pictureUrl and gameName
-                //gameUrl = randomObject?.getString("freetogame_profile_url").toString()
-                gameName = randomObject?.getString("title").toString()
-                pictureUrl = randomObject?.getString("thumbnail").toString()
-                gameDescription = randomObject?.getString("short_description").toString()
                 Log.d("JSON", "$pictureUrl \n $gameName")
-                setEverything(text, imageView, description)
+                val gameJSON = json?.jsonArray
 
+                if (gameJSON != null) {
+                    for(i in 0 until  gameJSON.length()){
+                        val tempJSON = gameJSON.getJSONObject(i)
+                        gameNameList.add(tempJSON.getString("title"))
+                        gameImageList.add(tempJSON.getString("thumbnail"))
+                        gameDescList.add(tempJSON.getString("short_description"))
+
+                    }
+                }
+
+
+                //setEverything(text, imageView, description)
+
+                //TODO: set up adapter and RecyclerView
+                val adapter = gameAdapter(gameNameList, gameImageList, gameDescList)
+                gamesRecyclerView.adapter = adapter
+                gamesRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
             }
 
         }]
-    }
-    private fun setEverything(text: TextView, imageView: ImageView, description: TextView){
-        description.text = gameDescription
-        text.text = gameName
-        Glide.with(this)
-            .load(pictureUrl)
-            .fitCenter()
-            .into(imageView)
-
-        setStatusBarColor()
     }
 
     private fun setStatusBarColor (){

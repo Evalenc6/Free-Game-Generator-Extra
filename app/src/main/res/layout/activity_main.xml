@@ -2,115 +2,72 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="240dp"
-        android:layout_height="41dp"
-        android:text="Free Game Generator"
-        android:textAlignment="center"
-        android:textColor="@color/red"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057" />
-
     <Spinner
         android:id="@+id/platformDropBox"
-        android:layout_width="125dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:entries="@array/platformArray"
+        android:layout_width="131dp"
+        android:layout_height="26dp"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/platformText" />
+        android:layout_marginStart="24dp"
+        android:entries="@array/platformArray"
+        app:layout_constraintStart_toEndOf="@+id/platformText"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/platformText"
-        android:layout_width="122dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="85dp"
+        android:layout_height="24dp"
         android:text="Platform"
         android:textColor="@color/red"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/gameTypeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="11dp"
         android:text="Game Type"
         android:textColor="@color/red"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/platformDropBox" />
+        app:layout_constraintTop_toBottomOf="@+id/platformText" />
 
     <Spinner
         android:id="@+id/gameTypeDropBox"
         android:layout_width="125dp"
         android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="9dp"
         android:entries="@array/gameTypeArrays"
+        app:layout_constraintStart_toEndOf="@id/gameTypeText"
+        app:layout_constraintTop_toBottomOf="@id/platformDropBox" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/gamesRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/gameTypeDropBox"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameTypeText" />
+        app:layout_constraintEnd_toEndOf="parent"  />
 
-    <ImageView
-        android:id="@+id/gameImage"
-        android:layout_width="259dp"
-        android:layout_height="134dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameTypeDropBox" />
 
-    <TextView
-        android:id="@+id/gameName"
-        android:layout_width="351dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-
-        android:text=""
-        android:textAlignment="center"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameImage" />
-
-    <TextView
-        android:id="@+id/gameDescription"
-        android:layout_width="246dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="16dp"
-        android:text=""
-        android:textAlignment="center"
-        android:textSize="15sp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameName" />
 
     <Button
         android:id="@+id/generateGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="123dp"
+        android:layout_height="62dp"
 
-        android:text="Generate Game"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameDescription" />
+        android:layout_marginStart="16dp"
+        android:text="Search"
+        app:layout_constraintStart_toEndOf="@+id/platformDropBox"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
