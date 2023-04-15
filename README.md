@@ -34,7 +34,7 @@ The following STRETCH features are implemented:
 
 Here's a video / GIF that demos all of the app's implemented features:
 
-<img src='http://i.imgur.com/6QPgINz.gif'/>
+<img src='http://i.imgur.com/ONJ9wGT.gif'/>
 
 GIF created with **ScreenToGif**
 
