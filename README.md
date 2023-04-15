@@ -1,17 +1,17 @@
 <!-- (This is a comment) INSTRUCTIONS: Go through this page and fill out any **bolded** entries with their correct values.-->
 
-# AND101 Project 5 - Choose Your Own API
+# AND101 Project 7 - CYOAPI Part 3: Beautified
 
 Submitted by: **Evan Valencia**
 
-Time spent: **5** hours spent in total
+Time spent: **2** hours spent in total
 
 ## Summary
 
-**Free Game Generator** is an android app that **Allows users to find a random free game based on their platform
-and game type using the FreeToGame API**
+**Free Game Generator Extra** is an android app that **App that displays free games of the users choosing allowing you to select
+which platform and game type you would like to find!**
 
-If I had to describe this project in three (3) emojis, they would be: :space_invader: :joystick: :video_game:
+If I had to describe this project in three (3) emojis, they would be: :joystick: :jigsaw: :video_game:
 
 ## Application Features
 
@@ -19,32 +19,24 @@ If I had to describe this project in three (3) emojis, they would be: :space_inv
 
 The following REQUIRED features are completed:
 
-- [X] Make an API call to an API of your choice using AsyncHTTPClient
-- [X] Display at least three (3) pieces of data for each API entry retrieved
-- [X] A working Button requests a new API entry and updates the data displayed
+- [X] App contains a RecyclerView that displays a list of scrollable data
+- [X] App displays at least two (2) pieces of data for each RecyclerView item
+- [X] Use a downloadable font with custom color and size
+- [X] Modify the theme of the app in `themes.xml`
+- [X] Define and apply at least one style in **either** `themes.xml` or a new file `styles.xml`
 
 The following STRETCH features are implemented:
 
-- [X] Add a query to the API request
-  - The query I added is **platform and game type**
-- [X] Build a UI to allow users to add that query
-
-The following EXTRA features are implemented:
-
-- Header color changes with pic
-- Displays if the query could not find any games 
-
-## API Choice
-
-My chosen API for this project is **FreeToGame**.
+- [X] Update the night theme to use different versions of styles when in dark mode
+- [ ] Use different drawables when in dark mode
 
 ## Video Demo
 
 Here's a video / GIF that demos all of the app's implemented features:
 
-<img src='http://i.imgur.com/iWlf9nV.gif' title='Video Demo' width='' alt='Video Demo' />
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Demo' width='' alt='Video Demo' />
 
-GIF created with **ScreenToGif**
+GIF created with **your chosen GIF tool**
 
 <!-- Recommended tools:
 - [Kap](https://getkap.co/) for macOS
@@ -53,9 +45,7 @@ GIF created with **ScreenToGif**
 
 ## Notes
 
-I learned how to use the AsyncHTTPClient to make calls to an API and integrate it 
-with my app. As well I learned how to use Glide to load pictures. The last thing I 
-learned was how to use the pallete class to grab the dominant color in a picture.
+Here's a place for any other notes on the app, it's creation process, or what you learned this unit!
 
 ## License
 
