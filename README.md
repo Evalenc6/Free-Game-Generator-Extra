@@ -9,7 +9,7 @@ Time spent: **2** hours spent in total
 ## Summary
 
 **Free Game Generator Extra** is an android app that **App that displays free games of the users choosing allowing you to select
-which platform and game type you would like to find!**
+which platform and game type you would like to find! This is able to be done using the FreeToGame API. **
 
 If I had to describe this project in three (3) emojis, they would be: :joystick: :jigsaw: :video_game:
 
@@ -45,7 +45,8 @@ GIF created with **your chosen GIF tool**
 
 ## Notes
 
-Here's a place for any other notes on the app, it's creation process, or what you learned this unit!
+During this project I learned how to use styling and change the styling based on the day or light mode of the phone. 
+As well as using the maxline and ellipse size to stop descriptions from getting too long
 
 ## License
 
